@@ -14,7 +14,6 @@ export const usePDFData = (options: { src: string, scale?: number }) => {
     setLoading(true)
     ;(async () => {
       const pdfDocument = await pdf.getDocument(options.src).promise
-      console.log(await pdfDocument.getMetadata())
       const task = new Array(pdfDocument.numPages).fill(null)
       await Promise.all(task.map(async (_, i) => {
         const page = await pdfDocument.getPage(i + 1)
